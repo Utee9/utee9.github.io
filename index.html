@@ -1,546 +1,569 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Utee | Data Engineer & Developer</title>
-    <meta name="description" content="Utomi Ogbe — Data engineer building automated systems, data pipelines, and fintech software. Python, SQL, AWS, Azure, and cloud-native solutions.">
-    <meta property="og:title" content="Utee | Data Engineer & Developer">
-    <meta property="og:description" content="Data engineer building automated, income-generating systems. Python, SQL, AWS, Azure, and cloud-native solutions.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://utee9.github.io">
-    <meta name="twitter:card" content="summary">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Utee | Data Engineer &amp; Automation Builder</title>
+<meta name="description" content="Utomi Ogbe — Data engineer building automated, income-generating systems. Trading bot infrastructure, pipelines, and fintech automation. Python, SQL, AWS, Azure.">
+<meta property="og:title" content="Utee | Data Engineer & Automation Builder">
+<meta property="og:description" content="Data engineer building automated, income-generating systems. Python, SQL, AWS, Azure, and cloud-native automation.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://utee9.github.io">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0D10;
+    --surface:#10151A;
+    --border:#1E262D;
+    --accent:#4C8DFF;
+    --red:#F0685C;
+    --gold:#E8B94A;
+    --text:#E7EDF2;
+    --muted:#7C8892;
+  }
+  html{ scroll-behavior:smooth; }
+  body{ font-family:'Inter', sans-serif; background:var(--bg); }
+  .font-display{ font-family:'Sora', sans-serif; }
+  .font-mono{ font-family:'IBM Plex Mono', monospace; }
 
-        .fade-in {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-        }
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+  .fade-in{ opacity:0; transform:translateY(20px); transition:opacity .7s ease-out, transform .7s ease-out; }
+  .fade-in.visible{ opacity:1; transform:translateY(0); }
 
-        .skill-tag {
-            transition: all 0.2s ease;
-        }
-        .skill-tag:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
-        }
+  .cmd-label::before{ content:'$ '; color:var(--accent); }
 
-        .project-card {
-            transition: all 0.3s ease;
-        }
-        .project-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
+  .cursor-blink{
+    display:inline-block; width:9px; height:1.1em; background:var(--accent);
+    margin-left:2px; vertical-align:text-bottom; animation:blink 1s step-end infinite;
+  }
+  @keyframes blink{ 50%{ opacity:0; } }
 
-        .nav-link {
-            position: relative;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #3b82f6;
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }
+  .ticker-track{ display:flex; width:max-content; animation:ticker 38s linear infinite; }
+  .ticker-track:hover{ animation-play-state:paused; }
+  @keyframes ticker{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
 
-        .gradient-text {
-            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+  .dot{ display:inline-block; width:6px; height:6px; border-radius:9999px; margin-right:8px; }
+  .dot-accent{ background:var(--accent); box-shadow:0 0 6px var(--accent); }
+  .dot-gold{ background:var(--gold); box-shadow:0 0 6px var(--gold); }
+  .dot-red{ background:var(--red); box-shadow:0 0 6px var(--red); }
 
-        .hero-glow {
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%);
-            top: -200px;
-            left: 50%;
-            transform: translateX(-50%);
-            pointer-events: none;
-            z-index: 0;
-        }
-    </style>
+  .skill-tag{ transition:all .2s ease; }
+  .skill-tag:hover{ transform:translateY(-2px); border-color:var(--accent); color:var(--text); }
+
+  .project-card{ transition:all .3s ease; }
+  .project-card:hover{ transform:translateY(-4px); box-shadow:0 24px 48px rgba(0,0,0,.35); }
+
+  .nav-link{ position:relative; }
+  .nav-link::after{
+    content:''; position:absolute; bottom:-4px; left:0; width:0; height:2px;
+    background:var(--accent); transition:width .25s ease;
+  }
+  .nav-link:hover::after{ width:100%; }
+
+  .grid-fade{
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 44px 44px;
+    -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, black 40%, transparent 100%);
+            mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, black 40%, transparent 100%);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .ticker-track, .cursor-blink, .fade-in{ animation:none !important; transition:none !important; }
+    .fade-in{ opacity:1; transform:none; }
+  }
+</style>
 </head>
-<body class="bg-gray-950 text-gray-100 antialiased">
+<body class="text-gray-100 antialiased" style="background:var(--bg);">
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-gray-950/80 backdrop-blur-md border-b border-gray-800/50">
-        <div class="flex justify-between items-center p-5 max-w-6xl mx-auto">
-            <a href="#" class="text-xl font-bold text-white tracking-tight">
-                Utee<span class="text-blue-500">.</span>
-            </a>
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="#about" class="nav-link text-gray-300 hover:text-white transition text-sm font-medium">About</a>
-                <a href="#experience" class="nav-link text-gray-300 hover:text-white transition text-sm font-medium">Experience</a>
-                <a href="#skills" class="nav-link text-gray-300 hover:text-white transition text-sm font-medium">Skills</a>
-                <a href="#projects" class="nav-link text-gray-300 hover:text-white transition text-sm font-medium">Projects</a>
-                <a href="#contact" class="nav-link text-gray-300 hover:text-white transition text-sm font-medium">Contact</a>
-                <a href="https://github.com/Utee9" target="_blank" rel="noopener noreferrer"
-                   class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg transition text-sm font-medium">
-                    GitHub
-                </a>
-            </div>
-            <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white" aria-label="Toggle navigation" aria-expanded="false">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                </svg>
-            </button>
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b" style="background:rgba(10,13,16,0.85); border-color:var(--border);">
+  <div class="flex justify-between items-center px-5 py-4 max-w-6xl mx-auto">
+    <a href="#" class="font-mono text-lg font-semibold text-white tracking-tight">
+      utee<span style="color:var(--accent);">$</span><span class="cursor-blink"></span>
+    </a>
+    <div class="hidden md:flex items-center space-x-8">
+      <a href="#about" class="nav-link text-gray-300 hover:text-white transition text-sm font-medium">About</a>
+      <a href="#experience" class="nav-link text-gray-300 hover:text-white transition text-sm font-medium">Experience</a>
+      <a href="#skills" class="nav-link text-gray-300 hover:text-white transition text-sm font-medium">Skills</a>
+      <a href="#projects" class="nav-link text-gray-300 hover:text-white transition text-sm font-medium">Projects</a>
+      <a href="#contact" class="nav-link text-gray-300 hover:text-white transition text-sm font-medium">Contact</a>
+      <a href="https://github.com/Utee9" target="_blank" rel="noopener noreferrer"
+         class="font-mono text-black px-4 py-2 rounded-lg transition text-sm font-semibold" style="background:var(--accent);">
+        GitHub
+      </a>
+    </div>
+    <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white" aria-label="Toggle navigation" aria-expanded="false">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden border-t" style="background:var(--surface); border-color:var(--border);">
+    <div class="px-5 py-4 space-y-3">
+      <a href="#about" class="block text-gray-300 hover:text-white transition">About</a>
+      <a href="#experience" class="block text-gray-300 hover:text-white transition">Experience</a>
+      <a href="#skills" class="block text-gray-300 hover:text-white transition">Skills</a>
+      <a href="#projects" class="block text-gray-300 hover:text-white transition">Projects</a>
+      <a href="#contact" class="block text-gray-300 hover:text-white transition">Contact</a>
+    </div>
+  </div>
+
+  <!-- Status ticker -->
+  <div class="overflow-hidden border-t" style="border-color:var(--border); background:var(--surface);">
+    <div class="ticker-track font-mono text-xs py-2">
+      <div class="flex items-center shrink-0">
+        <span class="flex items-center px-6 text-gray-400"><span class="dot dot-accent"></span>GROK-PORTFOLIO-BOT &nbsp;ACTIVE — 4 AI PORTFOLIOS MIRRORED</span>
+        <span class="flex items-center px-6 text-gray-400"><span class="dot dot-gold"></span>MEXC INTEGRATION &nbsp;9/50 TICKERS COVERED</span>
+        <span class="flex items-center px-6 text-gray-400"><span class="dot dot-accent"></span>UCSYNC &nbsp;PRODUCTION — 100s OF DAILY SYNCS</span>
+        <span class="flex items-center px-6 text-gray-400"><span class="dot dot-accent"></span>PRICE-ALERT BOT &nbsp;LIVE — 30MIN CRON</span>
+        <span class="flex items-center px-6 text-gray-400"><span class="dot dot-red"></span>COVERAGE GAP &nbsp;37/50 TICKERS STRUCTURALLY UNTOKENIZED</span>
+        <span class="flex items-center px-6 text-gray-400"><span class="dot dot-gold"></span>STATUS &nbsp;BUILDING IN PUBLIC FROM LAGOS, NG</span>
+      </div>
+      <div class="flex items-center shrink-0" aria-hidden="true">
+        <span class="flex items-center px-6 text-gray-400"><span class="dot dot-accent"></span>GROK-PORTFOLIO-BOT &nbsp;ACTIVE — 4 AI PORTFOLIOS MIRRORED</span>
+        <span class="flex items-center px-6 text-gray-400"><span class="dot dot-gold"></span>MEXC INTEGRATION &nbsp;9/50 TICKERS COVERED</span>
+        <span class="flex items-center px-6 text-gray-400"><span class="dot dot-accent"></span>UCSYNC &nbsp;PRODUCTION — 100s OF DAILY SYNCS</span>
+        <span class="flex items-center px-6 text-gray-400"><span class="dot dot-accent"></span>PRICE-ALERT BOT &nbsp;LIVE — 30MIN CRON</span>
+        <span class="flex items-center px-6 text-gray-400"><span class="dot dot-red"></span>COVERAGE GAP &nbsp;37/50 TICKERS STRUCTURALLY UNTOKENIZED</span>
+        <span class="flex items-center px-6 text-gray-400"><span class="dot dot-gold"></span>STATUS &nbsp;BUILDING IN PUBLIC FROM LAGOS, NG</span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="relative min-h-screen flex items-center justify-center px-6 pt-32 grid-fade">
+  <div class="max-w-4xl mx-auto text-center relative z-10">
+    <div class="fade-in">
+      <p class="font-mono text-sm mb-5" style="color:var(--accent);">
+        <span class="cmd-label">whoami</span>
+      </p>
+      <h1 class="font-display text-5xl md:text-7xl font-extrabold mb-6 tracking-tight text-white">
+        Utee<span style="color:var(--accent);">.</span>
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-300 mb-4 max-w-2xl mx-auto leading-relaxed">
+        I automate the boring stuff so humans don't have to.
+      </p>
+      <p class="text-gray-500 mb-6 max-w-xl mx-auto">
+        Developer focused on smart automation tools, data pipelines, and fintech software that solves real-world problems.
+      </p>
+      <p class="font-mono text-xs mb-10 inline-flex items-center gap-2 px-3 py-1.5 rounded-full border" style="border-color:var(--border); color:var(--muted);">
+        <span class="dot dot-accent" style="margin-right:6px;"></span>
+        now: migrating Grok-Portfolio-Bot's execution venue to MEXC
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#projects" class="text-black font-semibold py-3 px-8 rounded-lg transition inline-flex items-center justify-center gap-2" style="background:var(--accent);">
+          View My Work
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </a>
+        <a href="https://github.com/Utee9" target="_blank" rel="noopener noreferrer"
+           class="border text-gray-300 hover:text-white font-semibold py-3 px-8 rounded-lg transition inline-flex items-center justify-center gap-2" style="border-color:var(--border);">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.08-.73.08-.73 1.2.08 1.83 1.24 1.83 1.24 1.08 1.84 2.8 1.3 3.48 1 .1-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23.96-.27 1.98-.4 3-.4s2.04.13 3 .4c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.22.69.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+    <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+    </svg>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about" class="py-24 px-6 border-t" style="border-color:var(--border);">
+  <div class="max-w-4xl mx-auto">
+    <div class="fade-in">
+      <p class="font-mono text-sm mb-3" style="color:var(--accent);"><span class="cmd-label">cat about.md</span></p>
+      <h2 class="font-display text-3xl md:text-4xl font-bold mb-8 text-white">Building things that matter.</h2>
+
+      <div class="grid md:grid-cols-2 gap-10">
+        <div class="text-gray-400 leading-relaxed space-y-4">
+          <p>I'm a data engineer and developer with a passion for automation, data pipelines, and fintech tooling. I take complex problems and break them down into elegant, efficient, well-tested solutions.</p>
+          <p>My work spans Python automation, cloud infrastructure across AWS, Azure, and GCP, database engineering, and building systems that save people time and money.</p>
+          <p>Currently shipping <span class="text-gray-200">Grok-Portfolio-Bot</span> — a GitHub Actions pipeline that mirrors AI-managed stock portfolios into crypto exchange sub-accounts — while running systematic coverage analysis across exchanges to close structural gaps in tokenized-asset availability.</p>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-gray-900 border-t border-gray-800">
-            <div class="px-5 py-4 space-y-3">
-                <a href="#about" class="block text-gray-300 hover:text-white transition">About</a>
-                <a href="#experience" class="block text-gray-300 hover:text-white transition">Experience</a>
-                <a href="#skills" class="block text-gray-300 hover:text-white transition">Skills</a>
-                <a href="#projects" class="block text-gray-300 hover:text-white transition">Projects</a>
-                <a href="#contact" class="block text-gray-300 hover:text-white transition">Contact</a>
+
+        <div class="space-y-6">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(76,141,255,0.12);">
+              <svg class="w-5 h-5" style="color:var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+              </svg>
             </div>
+            <div>
+              <h4 class="font-semibold text-white mb-1">Automation First</h4>
+              <p class="text-gray-500 text-sm">If I do it twice, I automate it. Scripts, bots, and scheduled pipelines are my bread and butter.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(232,185,74,0.12);">
+              <svg class="w-5 h-5" style="color:var(--gold);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-semibold text-white mb-1">Data-Driven</h4>
+              <p class="text-gray-500 text-sm">From ETL pipelines to reconciliation logic, I test against live ground-truth data before committing to architecture.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(240,104,92,0.12);">
+              <svg class="w-5 h-5" style="color:var(--red);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-semibold text-white mb-1">Cloud Native</h4>
+              <p class="text-gray-500 text-sm">AWS Certified Cloud Practitioner. Comfortable across AWS, Azure, and GCP — Docker, serverless, and scalable architectures.</p>
+            </div>
+          </div>
         </div>
-    </nav>
+      </div>
 
-    <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center px-6 pt-20">
-        <div class="hero-glow"></div>
-        <div class="max-w-4xl mx-auto text-center relative z-10">
-            <div class="fade-in">
-                <p class="text-blue-400 font-medium mb-4 text-sm tracking-wide uppercase">Hello, I'm</p>
-                <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">
-                    Utee<span class="gradient-text">.</span>
-                </h1>
-                <p class="text-xl md:text-2xl text-gray-400 mb-4 max-w-2xl mx-auto leading-relaxed">
-                    I automate the boring stuff so humans don't have to.
-                </p>
-                <p class="text-gray-500 mb-10 max-w-xl mx-auto">
-                    Developer focused on smart automation tools, data pipelines, and fintech software that solves real-world problems.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#projects" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 px-8 rounded-lg transition inline-flex items-center justify-center gap-2">
-                        View My Work
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                        </svg>
-                    </a>
-                    <a href="https://github.com/Utee9" target="_blank" rel="noopener noreferrer"
-                       class="border border-gray-700 hover:border-gray-500 text-gray-300 hover:text-white font-semibold py-3 px-8 rounded-lg transition inline-flex items-center justify-center gap-2">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.08-.73.08-.73 1.2.08 1.83 1.24 1.83 1.24 1.08 1.84 2.8 1.3 3.48 1 .1-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23.96-.27 1.98-.4 3-.4s2.04.13 3 .4c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.22.69.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/>
-                        </svg>
-                        GitHub
-                    </a>
-                </div>
-            </div>
+      <div class="mt-12 pt-8 border-t" style="border-color:var(--border);">
+        <h4 class="font-mono text-xs uppercase tracking-wide text-gray-500 mb-4">Certifications</h4>
+        <div class="flex flex-wrap gap-3">
+          <span class="border text-xs px-3 py-1.5 rounded-full font-mono" style="background:rgba(232,185,74,0.08); border-color:rgba(232,185,74,0.3); color:var(--gold);">AWS Certified Cloud Practitioner</span>
+          <span class="border text-xs px-3 py-1.5 rounded-full font-mono" style="background:rgba(232,185,74,0.08); border-color:rgba(232,185,74,0.3); color:var(--gold);">Meta Database Engineer Specialization</span>
+          <span class="border text-xs px-3 py-1.5 rounded-full font-mono" style="background:rgba(232,185,74,0.08); border-color:rgba(232,185,74,0.3); color:var(--gold);">Google Data Analytics Professional</span>
+          <span class="border text-xs px-3 py-1.5 rounded-full font-mono" style="background:rgba(232,185,74,0.08); border-color:rgba(232,185,74,0.3); color:var(--gold);">ALX-T Cloud Developer (Udacity)</span>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- About Section -->
-    <section id="about" class="py-24 px-6 border-t border-gray-900">
-        <div class="max-w-4xl mx-auto">
-            <div class="fade-in">
-                <p class="text-blue-400 font-medium mb-2 text-sm tracking-wide uppercase">About Me</p>
-                <h2 class="text-3xl md:text-4xl font-bold mb-8">Building things that matter.</h2>
-                <div class="grid md:grid-cols-2 gap-10">
-                    <div class="text-gray-400 leading-relaxed space-y-4">
-                        <p>
-                            I'm a data engineer and developer with a passion for automation, data pipelines, and fintech tools.
-                            I enjoy taking complex problems and breaking them down into elegant, efficient solutions.
-                        </p>
-                        <p>
-                            My work spans Python automation, cloud infrastructure across AWS, Azure, and GCP, database engineering,
-                            and building systems that save people time and money.
-                        </p>
-                        <p>
-                            Currently shipping <span class="text-gray-300">Grok-Portfolio-Bot</span> and exploring
-                            <span class="text-gray-300">Rust for systems programming</span> and
-                            <span class="text-gray-300">lighter-weight streaming patterns</span>.
-                        </p>
-                    </div>
-                    <div class="space-y-6">
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-lg bg-blue-900/30 flex items-center justify-center flex-shrink-0">
-                                <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-white mb-1">Automation First</h4>
-                                <p class="text-gray-500 text-sm">If I do it twice, I automate it. Scripts, bots, and pipelines are my bread and butter.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-lg bg-purple-900/30 flex items-center justify-center flex-shrink-0">
-                                <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-white mb-1">Data-Driven</h4>
-                                <p class="text-gray-500 text-sm">From ETL pipelines to analytics dashboards, I turn raw data into actionable insights.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-lg bg-green-900/30 flex items-center justify-center flex-shrink-0">
-                                <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-white mb-1">Cloud Native</h4>
-                                <p class="text-gray-500 text-sm">AWS Certified Cloud Practitioner. Comfortable across AWS, Azure, and GCP. Docker, serverless, and scalable architectures.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<!-- Experience -->
+<section id="experience" class="py-24 px-6 border-t" style="border-color:var(--border); background:rgba(255,255,255,0.015);">
+  <div class="max-w-4xl mx-auto">
+    <div class="fade-in">
+      <p class="font-mono text-sm mb-3" style="color:var(--accent);"><span class="cmd-label">git log --author="Utee"</span></p>
+      <h2 class="font-display text-3xl md:text-4xl font-bold mb-12 text-white">Where I've Worked</h2>
 
-                <!-- Certifications -->
-                <div class="mt-12 pt-8 border-t border-gray-800">
-                    <h4 class="text-white font-semibold mb-4">Certifications</h4>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="bg-yellow-900/20 border border-yellow-700/30 text-yellow-300 text-xs px-3 py-1.5 rounded-full">AWS Certified Cloud Practitioner</span>
-                        <span class="bg-yellow-900/20 border border-yellow-700/30 text-yellow-300 text-xs px-3 py-1.5 rounded-full">Meta Database Engineer Specialization</span>
-                        <span class="bg-yellow-900/20 border border-yellow-700/30 text-yellow-300 text-xs px-3 py-1.5 rounded-full">Google Data Analytics Professional</span>
-                        <span class="bg-yellow-900/20 border border-yellow-700/30 text-yellow-300 text-xs px-3 py-1.5 rounded-full">ALX-T Cloud Developer (Udacity)</span>
-                    </div>
-                </div>
-            </div>
+      <div class="space-y-8">
+        <div class="flex flex-col md:flex-row gap-4 md:gap-6">
+          <div class="flex-shrink-0 md:w-28 md:text-right pt-1">
+            <span class="font-mono text-sm" style="color:var(--accent);">2022—Now</span>
+          </div>
+          <div class="border-l pl-6 pb-8" style="border-color:var(--border);">
+            <h3 class="text-white font-semibold text-lg">Data Developer</h3>
+            <p class="text-gray-400 text-sm mb-3">Work Your Data</p>
+            <ul class="text-gray-500 text-sm leading-relaxed space-y-1.5 list-disc list-outside ml-4">
+              <li>Build data pipelines and analytics solutions for business stakeholders using Python, SQL, and Power BI</li>
+              <li>Deliver dashboards and reporting that translate raw operational data into decisions stakeholders act on</li>
+              <li>Work across cloud platforms (Azure) to keep pipelines reliable, scheduled, and low-maintenance</li>
+            </ul>
+          </div>
         </div>
-    </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="py-24 px-6 bg-gray-900/30 border-t border-gray-900">
-        <div class="max-w-4xl mx-auto">
-            <div class="fade-in">
-                <p class="text-blue-400 font-medium mb-2 text-sm tracking-wide uppercase">Experience</p>
-                <h2 class="text-3xl md:text-4xl font-bold mb-12">Where I've Worked</h2>
-                <div class="space-y-8">
-                    <div class="flex gap-6">
-                        <div class="flex-shrink-0 w-28 text-right pt-1">
-                            <span class="text-blue-400 text-sm font-medium">2022 - Now</span>
-                        </div>
-                        <div class="border-l border-gray-800 pl-6 pb-8">
-                            <h3 class="text-white font-semibold text-lg">Data Developer</h3>
-                            <p class="text-gray-400 text-sm mb-2">Work Your Data</p>
-                            <p class="text-gray-500 text-sm leading-relaxed">Building data pipelines and analytics solutions for business stakeholders. Working with Python, SQL, Power BI, and cloud platforms to deliver actionable insights.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-6">
-                        <div class="flex-shrink-0 w-28 text-right pt-1">
-                            <span class="text-blue-400 text-sm font-medium">2021 - 2022</span>
-                        </div>
-                        <div class="border-l border-gray-800 pl-6 pb-8">
-                            <h3 class="text-white font-semibold text-lg">Campus Lead Ambassador</h3>
-                            <p class="text-gray-400 text-sm mb-2">Ingressive for Good · University of Benin</p>
-                            <p class="text-gray-500 text-sm leading-relaxed">Led tech community initiatives and mentored students in data science, cloud computing, and software development skills.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-6">
-                        <div class="flex-shrink-0 w-28 text-right pt-1">
-                            <span class="text-blue-400 text-sm font-medium">2021</span>
-                        </div>
-                        <div class="border-l border-gray-800 pl-6">
-                            <h3 class="text-white font-semibold text-lg">Data Analyst Intern</h3>
-                            <p class="text-gray-400 text-sm mb-2">Edo State Skills Development Agency</p>
-                            <p class="text-gray-500 text-sm leading-relaxed">Data analysis, visualization, and reporting for skills development programs across Edo State.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Education -->
-                <div class="mt-12 pt-8 border-t border-gray-800">
-                    <h4 class="text-white font-semibold mb-4">Education</h4>
-                    <div class="flex items-center gap-4">
-                        <div class="w-10 h-10 rounded-lg bg-blue-900/30 flex items-center justify-center flex-shrink-0">
-                            <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <p class="text-white font-medium">BSc Computer Science</p>
-                            <p class="text-gray-500 text-sm">University of Benin · 2017 - 2022</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="flex flex-col md:flex-row gap-4 md:gap-6">
+          <div class="flex-shrink-0 md:w-28 md:text-right pt-1">
+            <span class="font-mono text-sm" style="color:var(--accent);">2021—2022</span>
+          </div>
+          <div class="border-l pl-6 pb-8" style="border-color:var(--border);">
+            <h3 class="text-white font-semibold text-lg">Campus Lead Ambassador</h3>
+            <p class="text-gray-400 text-sm mb-2">Ingressive for Good · University of Benin</p>
+            <p class="text-gray-500 text-sm leading-relaxed">Led tech community initiatives and mentored students in data science, cloud computing, and software development skills.</p>
+          </div>
         </div>
-    </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="py-24 px-6">
-        <div class="max-w-4xl mx-auto">
-            <div class="fade-in text-center mb-12">
-                <p class="text-blue-400 font-medium mb-2 text-sm tracking-wide uppercase">Tech Stack</p>
-                <h2 class="text-3xl md:text-4xl font-bold">Tools I Work With</h2>
-            </div>
-            <div class="fade-in flex flex-wrap justify-center gap-3">
-                <span class="skill-tag bg-gray-800 border border-gray-700 text-gray-300 px-4 py-2 rounded-full text-sm font-medium cursor-default">Python</span>
-                <span class="skill-tag bg-gray-800 border border-gray-700 text-gray-300 px-4 py-2 rounded-full text-sm font-medium cursor-default">SQL</span>
-                <span class="skill-tag bg-gray-800 border border-gray-700 text-gray-300 px-4 py-2 rounded-full text-sm font-medium cursor-default">T-SQL</span>
-                <span class="skill-tag bg-gray-800 border border-gray-700 text-gray-300 px-4 py-2 rounded-full text-sm font-medium cursor-default">PostgreSQL</span>
-                <span class="skill-tag bg-gray-800 border border-gray-700 text-gray-300 px-4 py-2 rounded-full text-sm font-medium cursor-default">MySQL</span>
-                <span class="skill-tag bg-gray-800 border border-gray-700 text-gray-300 px-4 py-2 rounded-full text-sm font-medium cursor-default">AWS</span>
-                <span class="skill-tag bg-gray-800 border border-gray-700 text-gray-300 px-4 py-2 rounded-full text-sm font-medium cursor-default">Azure</span>
-                <span class="skill-tag bg-gray-800 border border-gray-700 text-gray-300 px-4 py-2 rounded-full text-sm font-medium cursor-default">GCP</span>
-                <span class="skill-tag bg-gray-800 border border-gray-700 text-gray-300 px-4 py-2 rounded-full text-sm font-medium cursor-default">Power BI</span>
-                <span class="skill-tag bg-gray-800 border border-gray-700 text-gray-300 px-4 py-2 rounded-full text-sm font-medium cursor-default">Tableau</span>
-                <span class="skill-tag bg-gray-800 border border-gray-700 text-gray-300 px-4 py-2 rounded-full text-sm font-medium cursor-default">dbt</span>
-                <span class="skill-tag bg-gray-800 border border-gray-700 text-gray-300 px-4 py-2 rounded-full text-sm font-medium cursor-default">Airflow</span>
-                <span class="skill-tag bg-gray-800 border border-gray-700 text-gray-300 px-4 py-2 rounded-full text-sm font-medium cursor-default">GitHub Actions</span>
-                <span class="skill-tag bg-gray-800 border border-gray-700 text-gray-300 px-4 py-2 rounded-full text-sm font-medium cursor-default">Docker</span>
-                <span class="skill-tag bg-gray-800 border border-gray-700 text-gray-300 px-4 py-2 rounded-full text-sm font-medium cursor-default">Terraform</span>
-                <span class="skill-tag bg-gray-800 border border-gray-700 text-gray-300 px-4 py-2 rounded-full text-sm font-medium cursor-default">FastAPI</span>
-                <span class="skill-tag bg-gray-800 border border-gray-700 text-gray-300 px-4 py-2 rounded-full text-sm font-medium cursor-default">Flask</span>
-                <span class="skill-tag bg-gray-800 border border-gray-700 text-gray-300 px-4 py-2 rounded-full text-sm font-medium cursor-default">TypeScript</span>
-                <span class="skill-tag bg-gray-800 border border-gray-700 text-gray-300 px-4 py-2 rounded-full text-sm font-medium cursor-default">Node.js</span>
-                <span class="skill-tag bg-gray-800 border border-gray-700 text-gray-300 px-4 py-2 rounded-full text-sm font-medium cursor-default">Pandas</span>
-                <span class="skill-tag bg-gray-800 border border-gray-700 text-gray-300 px-4 py-2 rounded-full text-sm font-medium cursor-default">NumPy</span>
-                <span class="skill-tag bg-gray-800 border border-gray-700 text-gray-300 px-4 py-2 rounded-full text-sm font-medium cursor-default">Jupyter</span>
-                <span class="skill-tag bg-gray-800 border border-gray-700 text-gray-300 px-4 py-2 rounded-full text-sm font-medium cursor-default">Git</span>
-                <span class="skill-tag bg-gray-800 border border-gray-700 text-gray-300 px-4 py-2 rounded-full text-sm font-medium cursor-default">Linux</span>
-                <span class="skill-tag bg-gray-800 border border-gray-700 text-gray-300 px-4 py-2 rounded-full text-sm font-medium cursor-default">REST APIs</span>
-                <span class="skill-tag bg-gray-800 border border-gray-700 text-gray-300 px-4 py-2 rounded-full text-sm font-medium cursor-default">CI/CD</span>
-            </div>
+        <div class="flex flex-col md:flex-row gap-4 md:gap-6">
+          <div class="flex-shrink-0 md:w-28 md:text-right pt-1">
+            <span class="font-mono text-sm" style="color:var(--accent);">2021</span>
+          </div>
+          <div class="border-l pl-6" style="border-color:var(--border);">
+            <h3 class="text-white font-semibold text-lg">Data Analyst Intern</h3>
+            <p class="text-gray-400 text-sm mb-2">Edo State Skills Development Agency</p>
+            <p class="text-gray-500 text-sm leading-relaxed">Data analysis, visualization, and reporting for skills development programs across Edo State.</p>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-24 px-6 bg-gray-900/30 border-t border-gray-900">
-        <div class="max-w-6xl mx-auto">
-            <div class="fade-in text-center mb-16">
-                <p class="text-blue-400 font-medium mb-2 text-sm tracking-wide uppercase">Portfolio</p>
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
-                <p class="text-gray-500 max-w-xl mx-auto">A selection of projects I've built, from automation bots to cloud-native applications.</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Project 1: Grok Portfolio Bot -->
-                <div class="project-card fade-in bg-gray-900 rounded-2xl p-8 border border-gray-800 hover:border-blue-500/50">
-                    <div class="flex justify-between items-start mb-4">
-                        <span class="bg-blue-900/40 text-blue-300 text-xs font-semibold px-3 py-1 rounded-full">Python / Automation</span>
-                        <a href="https://github.com/Utee9/Grok-Portfolio-Bot" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-white transition">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.08-.73.08-.73 1.2.08 1.83 1.24 1.83 1.24 1.08 1.84 2.8 1.3 3.48 1 .1-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23.96-.27 1.98-.4 3-.4s2.04.13 3 .4c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.22.69.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                        </a>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 text-white">AI Portfolio Mirror Bot</h3>
-                    <p class="text-gray-400 mb-6 text-sm leading-relaxed">
-                        A GitHub Actions pipeline that mirrors AI-managed stock portfolios (Grok, Claude, DeepSeek, GPT) into crypto exchange sub-accounts via tokenized stock pairs, with live extraction through the xAI Responses API.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="bg-gray-800 text-gray-400 text-xs px-2 py-1 rounded">Python</span>
-                        <span class="bg-gray-800 text-gray-400 text-xs px-2 py-1 rounded">Bitget API</span>
-                        <span class="bg-gray-800 text-gray-400 text-xs px-2 py-1 rounded">xAI API</span>
-                        <span class="bg-gray-800 text-gray-400 text-xs px-2 py-1 rounded">GitHub Actions</span>
-                    </div>
-                    <a href="https://github.com/Utee9/Grok-Portfolio-Bot" target="_blank" rel="noopener noreferrer"
-                       class="text-blue-400 font-medium hover:text-blue-300 transition inline-flex items-center text-sm">
-                        View Source Code
-                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                        </svg>
-                    </a>
-                </div>
-
-                <!-- Project 2: ucsync -->
-                <div class="project-card fade-in bg-gray-900 rounded-2xl p-8 border border-gray-800 hover:border-pink-500/50">
-                    <div class="flex justify-between items-start mb-4">
-                        <span class="bg-pink-900/40 text-pink-300 text-xs font-semibold px-3 py-1 rounded-full">Flask / Shipped</span>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 text-white">ucsync</h3>
-                    <p class="text-gray-400 mb-6 text-sm leading-relaxed">
-                        Flask-backed browser extension automating portal data extraction for UK property-management clients. In production use, handling hundreds of daily syncs.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="bg-gray-800 text-gray-400 text-xs px-2 py-1 rounded">Flask</span>
-                        <span class="bg-gray-800 text-gray-400 text-xs px-2 py-1 rounded">Python</span>
-                        <span class="bg-gray-800 text-gray-400 text-xs px-2 py-1 rounded">Browser Extensions</span>
-                        <span class="bg-gray-800 text-gray-400 text-xs px-2 py-1 rounded">Automation</span>
-                    </div>
-                    <span class="text-pink-400 font-medium inline-flex items-center text-sm">
-                        Client work · Shipped to production
-                    </span>
-                </div>
-
-                <!-- Project 3: Meta DB Capstone -->
-                <div class="project-card fade-in bg-gray-900 rounded-2xl p-8 border border-gray-800 hover:border-purple-500/50">
-                    <div class="flex justify-between items-start mb-4">
-                        <span class="bg-purple-900/40 text-purple-300 text-xs font-semibold px-3 py-1 rounded-full">Database / SQL</span>
-                        <a href="https://github.com/Utee9/db-capstone-project" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-white transition">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.08-.73.08-.73 1.2.08 1.83 1.24 1.83 1.24 1.08 1.84 2.8 1.3 3.48 1 .1-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23.96-.27 1.98-.4 3-.4s2.04.13 3 .4c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.22.69.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                        </a>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 text-white">Meta Database Engineer Capstone</h3>
-                    <p class="text-gray-400 mb-6 text-sm leading-relaxed">
-                        End-to-end database design for a restaurant booking system. ER diagrams, normalized schemas, stored procedures, Tableau dashboards, and Python client integration.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="bg-gray-800 text-gray-400 text-xs px-2 py-1 rounded">MySQL</span>
-                        <span class="bg-gray-800 text-gray-400 text-xs px-2 py-1 rounded">Python</span>
-                        <span class="bg-gray-800 text-gray-400 text-xs px-2 py-1 rounded">Tableau</span>
-                        <span class="bg-gray-800 text-gray-400 text-xs px-2 py-1 rounded">Database Design</span>
-                    </div>
-                    <a href="https://github.com/Utee9/db-capstone-project" target="_blank" rel="noopener noreferrer"
-                       class="text-purple-400 font-medium hover:text-purple-300 transition inline-flex items-center text-sm">
-                        View Source Code
-                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                        </svg>
-                    </a>
-                </div>
-
-                <!-- Project 4: Udagram -->
-                <div class="project-card fade-in bg-gray-900 rounded-2xl p-8 border border-gray-800 hover:border-green-500/50">
-                    <div class="flex justify-between items-start mb-4">
-                        <span class="bg-green-900/40 text-green-300 text-xs font-semibold px-3 py-1 rounded-full">AWS / Cloud</span>
-                        <a href="https://github.com/Utee9/image-filter" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-white transition">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.08-.73.08-.73 1.2.08 1.83 1.24 1.83 1.24 1.08 1.84 2.8 1.3 3.48 1 .1-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23.96-.27 1.98-.4 3-.4s2.04.13 3 .4c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.22.69.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                        </a>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 text-white">Udagram Image Filter</h3>
-                    <p class="text-gray-400 mb-6 text-sm leading-relaxed">
-                        Cloud-native image filtering microservice deployed on AWS. Node-Express backend with S3 storage and Elastic Beanstalk deployment. Built during the Udacity Cloud Engineering Nanodegree.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="bg-gray-800 text-gray-400 text-xs px-2 py-1 rounded">TypeScript</span>
-                        <span class="bg-gray-800 text-gray-400 text-xs px-2 py-1 rounded">Node.js</span>
-                        <span class="bg-gray-800 text-gray-400 text-xs px-2 py-1 rounded">AWS S3</span>
-                        <span class="bg-gray-800 text-gray-400 text-xs px-2 py-1 rounded">Elastic Beanstalk</span>
-                    </div>
-                    <a href="https://github.com/Utee9/image-filter" target="_blank" rel="noopener noreferrer"
-                       class="text-green-400 font-medium hover:text-green-300 transition inline-flex items-center text-sm">
-                        View Source Code
-                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                        </svg>
-                    </a>
-                </div>
-
-                <!-- Project 5: Disease Outbreak Analysis -->
-                <div class="project-card fade-in bg-gray-900 rounded-2xl p-8 border border-gray-800 hover:border-orange-500/50">
-                    <div class="flex justify-between items-start mb-4">
-                        <span class="bg-orange-900/40 text-orange-300 text-xs font-semibold px-3 py-1 rounded-full">Data / Analytics</span>
-                        <a href="https://github.com/Utee9/My-Analysis" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-white transition">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.08-.73.08-.73 1.2.08 1.83 1.24 1.83 1.24 1.08 1.84 2.8 1.3 3.48 1 .1-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23.96-.27 1.98-.4 3-.4s2.04.13 3 .4c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.22.69.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                        </a>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 text-white">Disease Outbreak Analysis</h3>
-                    <p class="text-gray-400 mb-6 text-sm leading-relaxed">
-                        Exploratory analysis of disease outbreak data across Nigerian states. Includes spatial visualizations, time-series trends, and statistical analysis using Python and Pandas.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="bg-gray-800 text-gray-400 text-xs px-2 py-1 rounded">Python</span>
-                        <span class="bg-gray-800 text-gray-400 text-xs px-2 py-1 rounded">Pandas</span>
-                        <span class="bg-gray-800 text-gray-400 text-xs px-2 py-1 rounded">Matplotlib</span>
-                        <span class="bg-gray-800 text-gray-400 text-xs px-2 py-1 rounded">Jupyter</span>
-                    </div>
-                    <a href="https://github.com/Utee9/My-Analysis" target="_blank" rel="noopener noreferrer"
-                       class="text-orange-400 font-medium hover:text-orange-300 transition inline-flex items-center text-sm">
-                        View Source Code
-                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
+      <div class="mt-12 pt-8 border-t" style="border-color:var(--border);">
+        <h4 class="font-mono text-xs uppercase tracking-wide text-gray-500 mb-4">Education</h4>
+        <div class="flex items-center gap-4">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(76,141,255,0.12);">
+            <svg class="w-5 h-5" style="color:var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-white font-medium">BSc Computer Science</p>
+            <p class="text-gray-500 text-sm">University of Benin · 2017—2022</p>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 px-6">
-        <div class="max-w-2xl mx-auto text-center fade-in">
-            <p class="text-blue-400 font-medium mb-2 text-sm tracking-wide uppercase">Get In Touch</p>
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">Let's Build Something Together</h2>
-            <p class="text-gray-400 mb-10">
-                Open to data engineering roles, collaborations, and interesting opportunities.
-                Drop me a line, I'd love to hear from you.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-                <a href="mailto:utemma9@gmail.com" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 px-8 rounded-lg transition inline-flex items-center justify-center gap-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                    </svg>
-                    Send an Email
-                </a>
-                <a href="https://github.com/Utee9" target="_blank" rel="noopener noreferrer"
-                   class="border border-gray-700 hover:border-gray-500 text-gray-300 hover:text-white font-semibold py-3 px-8 rounded-lg transition inline-flex items-center justify-center gap-2">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.08-.73.08-.73 1.2.08 1.83 1.24 1.83 1.24 1.08 1.84 2.8 1.3 3.48 1 .1-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23.96-.27 1.98-.4 3-.4s2.04.13 3 .4c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.22.69.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/>
-                    </svg>
-                    GitHub
-                </a>
-            </div>
-            <div class="flex justify-center gap-6">
-                <a href="https://linkedin.com/in/utomi-ogbe/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-white transition" aria-label="LinkedIn">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                    </svg>
-                </a>
-                <a href="https://public.tableau.com/app/profile/utomi.ogbe" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-white transition" aria-label="Tableau Public">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12.5 2C10.5 2 9 3.5 9 5.5c0 .8.3 1.5.7 2.1L7.3 10H5.5C3.5 10 2 11.5 2 13.5S3.5 17 5.5 17h1.8l2.4 2.4c-.4.6-.7 1.3-.7 2.1 0 2 1.5 3.5 3.5 3.5s3.5-1.5 3.5-3.5c0-.8-.3-1.5-.7-2.1L17.7 17h1.8c2 0 3.5-1.5 3.5-3.5S21.5 10 19.5 10h-1.8l-2.4-2.4c.4-.6.7-1.3.7-2.1C16 3.5 14.5 2 12.5 2zm0 2c.9 0 1.5.6 1.5 1.5S13.4 7 12.5 7 11 6.4 11 5.5 11.6 4 12.5 4zM5.5 12h2.3l-2.3 2.3V12zm14 0v2.3L17.2 12h2.3zM12.5 18c.9 0 1.5.6 1.5 1.5s-.6 1.5-1.5 1.5-1.5-.6-1.5-1.5.6-1.5 1.5-1.5z"/>
-                    </svg>
-                </a>
-            </div>
+<!-- Skills -->
+<section id="skills" class="py-24 px-6 border-t" style="border-color:var(--border);">
+  <div class="max-w-4xl mx-auto">
+    <div class="fade-in mb-12">
+      <p class="font-mono text-sm mb-3" style="color:var(--accent);"><span class="cmd-label">cat stack.json</span></p>
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-white">Tools I Work With</h2>
+    </div>
+
+    <div class="fade-in grid sm:grid-cols-2 gap-8">
+      <div>
+        <h4 class="font-mono text-xs uppercase tracking-wide mb-3" style="color:var(--gold);">Languages &amp; Data</h4>
+        <div class="flex flex-wrap gap-2">
+          <span class="skill-tag border text-gray-300 px-3 py-1.5 rounded-full text-sm font-mono cursor-default" style="background:var(--surface); border-color:var(--border);">Python</span>
+          <span class="skill-tag border text-gray-300 px-3 py-1.5 rounded-full text-sm font-mono cursor-default" style="background:var(--surface); border-color:var(--border);">SQL</span>
+          <span class="skill-tag border text-gray-300 px-3 py-1.5 rounded-full text-sm font-mono cursor-default" style="background:var(--surface); border-color:var(--border);">T-SQL</span>
+          <span class="skill-tag border text-gray-300 px-3 py-1.5 rounded-full text-sm font-mono cursor-default" style="background:var(--surface); border-color:var(--border);">PostgreSQL</span>
+          <span class="skill-tag border text-gray-300 px-3 py-1.5 rounded-full text-sm font-mono cursor-default" style="background:var(--surface); border-color:var(--border);">MySQL</span>
+          <span class="skill-tag border text-gray-300 px-3 py-1.5 rounded-full text-sm font-mono cursor-default" style="background:var(--surface); border-color:var(--border);">TypeScript</span>
+          <span class="skill-tag border text-gray-300 px-3 py-1.5 rounded-full text-sm font-mono cursor-default" style="background:var(--surface); border-color:var(--border);">Pandas</span>
+          <span class="skill-tag border text-gray-300 px-3 py-1.5 rounded-full text-sm font-mono cursor-default" style="background:var(--surface); border-color:var(--border);">NumPy</span>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-8 px-6 border-t border-gray-900">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="text-gray-600 text-sm">
-                &copy; 2026 Utomi Ogbe. Built with care and deployed on GitHub Pages.
-            </p>
-            <p class="text-gray-700 text-xs">
-                Made with Python, caffeine, and late nights.
-            </p>
+      </div>
+      <div>
+        <h4 class="font-mono text-xs uppercase tracking-wide mb-3" style="color:var(--gold);">Cloud &amp; Infra</h4>
+        <div class="flex flex-wrap gap-2">
+          <span class="skill-tag border text-gray-300 px-3 py-1.5 rounded-full text-sm font-mono cursor-default" style="background:var(--surface); border-color:var(--border);">AWS</span>
+          <span class="skill-tag border text-gray-300 px-3 py-1.5 rounded-full text-sm font-mono cursor-default" style="background:var(--surface); border-color:var(--border);">Azure</span>
+          <span class="skill-tag border text-gray-300 px-3 py-1.5 rounded-full text-sm font-mono cursor-default" style="background:var(--surface); border-color:var(--border);">GCP</span>
+          <span class="skill-tag border text-gray-300 px-3 py-1.5 rounded-full text-sm font-mono cursor-default" style="background:var(--surface); border-color:var(--border);">Docker</span>
+          <span class="skill-tag border text-gray-300 px-3 py-1.5 rounded-full text-sm font-mono cursor-default" style="background:var(--surface); border-color:var(--border);">Terraform</span>
+          <span class="skill-tag border text-gray-300 px-3 py-1.5 rounded-full text-sm font-mono cursor-default" style="background:var(--surface); border-color:var(--border);">Git</span>
+          <span class="skill-tag border text-gray-300 px-3 py-1.5 rounded-full text-sm font-mono cursor-default" style="background:var(--surface); border-color:var(--border);">Linux</span>
         </div>
-    </footer>
+      </div>
+      <div>
+        <h4 class="font-mono text-xs uppercase tracking-wide mb-3" style="color:var(--gold);">Automation &amp; Backend</h4>
+        <div class="flex flex-wrap gap-2">
+          <span class="skill-tag border text-gray-300 px-3 py-1.5 rounded-full text-sm font-mono cursor-default" style="background:var(--surface); border-color:var(--border);">GitHub Actions</span>
+          <span class="skill-tag border text-gray-300 px-3 py-1.5 rounded-full text-sm font-mono cursor-default" style="background:var(--surface); border-color:var(--border);">FastAPI</span>
+          <span class="skill-tag border text-gray-300 px-3 py-1.5 rounded-full text-sm font-mono cursor-default" style="background:var(--surface); border-color:var(--border);">Flask</span>
+          <span class="skill-tag border text-gray-300 px-3 py-1.5 rounded-full text-sm font-mono cursor-default" style="background:var(--surface); border-color:var(--border);">Node.js</span>
+          <span class="skill-tag border text-gray-300 px-3 py-1.5 rounded-full text-sm font-mono cursor-default" style="background:var(--surface); border-color:var(--border);">REST APIs</span>
+          <span class="skill-tag border text-gray-300 px-3 py-1.5 rounded-full text-sm font-mono cursor-default" style="background:var(--surface); border-color:var(--border);">CI/CD</span>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-mono text-xs uppercase tracking-wide mb-3" style="color:var(--gold);">BI &amp; Analytics</h4>
+        <div class="flex flex-wrap gap-2">
+          <span class="skill-tag border text-gray-300 px-3 py-1.5 rounded-full text-sm font-mono cursor-default" style="background:var(--surface); border-color:var(--border);">Power BI</span>
+          <span class="skill-tag border text-gray-300 px-3 py-1.5 rounded-full text-sm font-mono cursor-default" style="background:var(--surface); border-color:var(--border);">Tableau</span>
+          <span class="skill-tag border text-gray-300 px-3 py-1.5 rounded-full text-sm font-mono cursor-default" style="background:var(--surface); border-color:var(--border);">dbt</span>
+          <span class="skill-tag border text-gray-300 px-3 py-1.5 rounded-full text-sm font-mono cursor-default" style="background:var(--surface); border-color:var(--border);">Airflow</span>
+          <span class="skill-tag border text-gray-300 px-3 py-1.5 rounded-full text-sm font-mono cursor-default" style="background:var(--surface); border-color:var(--border);">Jupyter</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Scripts -->
-    <script>
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuBtn.addEventListener('click', () => {
-            const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
-            mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
-            mobileMenu.classList.toggle('hidden');
-        });
+<!-- Projects -->
+<section id="projects" class="py-24 px-6 border-t" style="border-color:var(--border); background:rgba(255,255,255,0.015);">
+  <div class="max-w-6xl mx-auto">
+    <div class="fade-in mb-16">
+      <p class="font-mono text-sm mb-3" style="color:var(--accent);"><span class="cmd-label">ls -la projects/</span></p>
+      <h2 class="font-display text-3xl md:text-4xl font-bold mb-4 text-white">Featured Projects</h2>
+      <p class="text-gray-500 max-w-xl">Shipped systems, not tutorials — from live trading automation to production client tooling.</p>
+    </div>
 
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                mobileMenuBtn.setAttribute('aria-expanded', 'false');
-            });
-        });
+    <div class="grid md:grid-cols-2 gap-8 mb-20">
+      <!-- Grok Portfolio Bot -->
+      <div class="project-card fade-in rounded-2xl p-8 border" style="background:var(--surface); border-color:var(--border);">
+        <div class="flex justify-between items-start mb-4">
+          <span class="font-mono text-xs font-semibold px-3 py-1 rounded-full" style="background:rgba(76,141,255,0.12); color:var(--accent);">Python / Automation · Active</span>
+          <a href="https://github.com/Utee9/Grok-Portfolio-Bot" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-white transition">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.08-.73.08-.73 1.2.08 1.83 1.24 1.83 1.24 1.08 1.84 2.8 1.3 3.48 1 .1-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23.96-.27 1.98-.4 3-.4s2.04.13 3 .4c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.22.69.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+        </div>
+        <h3 class="text-xl font-bold mb-3 text-white">AI Portfolio Mirror Bot</h3>
+        <p class="text-gray-400 mb-4 text-sm leading-relaxed">
+          A GitHub Actions pipeline (cron every 6 hours) that mirrors four AI-managed stock portfolios — Grok, Claude, DeepSeek, and GPT — into isolated crypto exchange sub-accounts via tokenized stock pairs. Live portfolio data is extracted from X posts through the xAI Responses API, reconciled with manual overrides, and classified into auto-traded weight disclosures vs. Telegram-only narrative alerts.
+        </p>
+        <div class="rounded-lg border px-4 py-3 mb-6 font-mono text-xs" style="border-color:var(--border); background:rgba(0,0,0,0.2);">
+          <p class="text-gray-500">$ coverage_report --venue mexc</p>
+          <p style="color:var(--gold);">9/50 tickers API-tradable · <span style="color:var(--red);">37/50 structurally untokenized</span></p>
+        </div>
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="text-gray-400 text-xs px-2 py-1 rounded font-mono" style="background:rgba(255,255,255,0.04);">Python</span>
+          <span class="text-gray-400 text-xs px-2 py-1 rounded font-mono" style="background:rgba(255,255,255,0.04);">xAI API</span>
+          <span class="text-gray-400 text-xs px-2 py-1 rounded font-mono" style="background:rgba(255,255,255,0.04);">MEXC / Bitget API</span>
+          <span class="text-gray-400 text-xs px-2 py-1 rounded font-mono" style="background:rgba(255,255,255,0.04);">GitHub Actions</span>
+          <span class="text-gray-400 text-xs px-2 py-1 rounded font-mono" style="background:rgba(255,255,255,0.04);">Telegram API</span>
+        </div>
+        <a href="https://github.com/Utee9/Grok-Portfolio-Bot" target="_blank" rel="noopener noreferrer"
+           class="font-medium transition inline-flex items-center text-sm" style="color:var(--accent);">
+          View Source Code
+          <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </a>
+      </div>
 
-        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
+      <!-- ucsync -->
+      <div class="project-card fade-in rounded-2xl p-8 border" style="background:var(--surface); border-color:var(--border);">
+        <div class="flex justify-between items-start mb-4">
+          <span class="font-mono text-xs font-semibold px-3 py-1 rounded-full" style="background:rgba(232,185,74,0.12); color:var(--gold);">Flask · Shipped to Production</span>
+        </div>
+        <h3 class="text-xl font-bold mb-3 text-white">ucsync</h3>
+        <p class="text-gray-400 mb-4 text-sm leading-relaxed">
+          Flask-backed browser extension automating portal data extraction for UK property-management clients. Handles hundreds of daily syncs in live production use — built end-to-end as client work, from extraction logic to deployment.
+        </p>
+        <div class="rounded-lg border px-4 py-3 mb-6 font-mono text-xs" style="border-color:var(--border); background:rgba(0,0,0,0.2);">
+          <p class="text-gray-500">$ status</p>
+          <p style="color:var(--accent);">production · client-owned repository (private)</p>
+        </div>
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="text-gray-400 text-xs px-2 py-1 rounded font-mono" style="background:rgba(255,255,255,0.04);">Flask</span>
+          <span class="text-gray-400 text-xs px-2 py-1 rounded font-mono" style="background:rgba(255,255,255,0.04);">Python</span>
+          <span class="text-gray-400 text-xs px-2 py-1 rounded font-mono" style="background:rgba(255,255,255,0.04);">Browser Extensions</span>
+          <span class="text-gray-400 text-xs px-2 py-1 rounded font-mono" style="background:rgba(255,255,255,0.04);">Automation</span>
+        </div>
+        <span class="font-medium inline-flex items-center text-sm" style="color:var(--gold);">
+          Client work — private repository
+        </span>
+      </div>
+    </div>
 
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-        document.querySelector('.fade-in').classList.add('visible');
-    </script>
+    <!-- Coursework & Fundamentals -->
+    <div class="fade-in mb-8 flex items-center gap-4">
+      <p class="font-mono text-xs uppercase tracking-wide whitespace-nowrap" style="color:var(--muted);">// coursework &amp; fundamentals</p>
+      <div class="h-px flex-1" style="background:var(--border);"></div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <!-- Meta DB Capstone -->
+      <div class="project-card fade-in rounded-xl p-6 border" style="background:rgba(255,255,255,0.015); border-color:var(--border);">
+        <div class="flex justify-between items-start mb-3">
+          <span class="font-mono text-xs px-2.5 py-1 rounded-full text-gray-400" style="background:rgba(255,255,255,0.04);">Database / SQL</span>
+          <a href="https://github.com/Utee9/db-capstone-project" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-white transition">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.08-.73.08-.73 1.2.08 1.83 1.24 1.83 1.24 1.08 1.84 2.8 1.3 3.48 1 .1-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23.96-.27 1.98-.4 3-.4s2.04.13 3 .4c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.22.69.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+        </div>
+        <h3 class="text-base font-semibold mb-2 text-white">Meta Database Engineer Capstone</h3>
+        <p class="text-gray-500 text-sm leading-relaxed mb-4">End-to-end database design for a restaurant booking system — ER diagrams, normalized schemas, stored procedures, Tableau dashboards, and Python client integration.</p>
+        <a href="https://github.com/Utee9/db-capstone-project" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white font-medium inline-flex items-center text-xs">
+          View Source
+          <svg class="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+      </div>
+
+      <!-- Udagram -->
+      <div class="project-card fade-in rounded-xl p-6 border" style="background:rgba(255,255,255,0.015); border-color:var(--border);">
+        <div class="flex justify-between items-start mb-3">
+          <span class="font-mono text-xs px-2.5 py-1 rounded-full text-gray-400" style="background:rgba(255,255,255,0.04);">AWS / Cloud</span>
+          <a href="https://github.com/Utee9/image-filter" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-white transition">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.08-.73.08-.73 1.2.08 1.83 1.24 1.83 1.24 1.08 1.84 2.8 1.3 3.48 1 .1-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23.96-.27 1.98-.4 3-.4s2.04.13 3 .4c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.22.69.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+        </div>
+        <h3 class="text-base font-semibold mb-2 text-white">Udagram Image Filter</h3>
+        <p class="text-gray-500 text-sm leading-relaxed mb-4">Cloud-native image filtering microservice — Node-Express backend with S3 storage and Elastic Beanstalk deployment. Built during the Udacity Cloud Engineering Nanodegree.</p>
+        <a href="https://github.com/Utee9/image-filter" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white font-medium inline-flex items-center text-xs">
+          View Source
+          <svg class="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+      </div>
+
+      <!-- Disease Outbreak Analysis -->
+      <div class="project-card fade-in rounded-xl p-6 border" style="background:rgba(255,255,255,0.015); border-color:var(--border);">
+        <div class="flex justify-between items-start mb-3">
+          <span class="font-mono text-xs px-2.5 py-1 rounded-full text-gray-400" style="background:rgba(255,255,255,0.04);">Data / Analytics</span>
+          <a href="https://github.com/Utee9/My-Analysis" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-white transition">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.08-.73.08-.73 1.2.08 1.83 1.24 1.83 1.24 1.08 1.84 2.8 1.3 3.48 1 .1-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23.96-.27 1.98-.4 3-.4s2.04.13 3 .4c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.22.69.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+        </div>
+        <h3 class="text-base font-semibold mb-2 text-white">Disease Outbreak Analysis</h3>
+        <p class="text-gray-500 text-sm leading-relaxed mb-4">Exploratory analysis of disease outbreak data across Nigerian states — spatial visualizations, time-series trends, and statistical analysis in Python and Pandas.</p>
+        <a href="https://github.com/Utee9/My-Analysis" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white font-medium inline-flex items-center text-xs">
+          View Source
+          <svg class="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="py-24 px-6 border-t" style="border-color:var(--border);">
+  <div class="max-w-2xl mx-auto text-center fade-in">
+    <p class="font-mono text-sm mb-3" style="color:var(--accent);"><span class="cmd-label">ping utee</span></p>
+    <h2 class="font-display text-3xl md:text-4xl font-bold mb-6 text-white">Let's Build Something Together</h2>
+    <p class="text-gray-400 mb-10">
+      Open to data engineering roles, collaborations, and interesting opportunities. Drop me a line, I'd love to hear from you.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+      <a href="mailto:utemma9@gmail.com" class="text-black font-semibold py-3 px-8 rounded-lg transition inline-flex items-center justify-center gap-2" style="background:var(--accent);">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+        </svg>
+        Send an Email
+      </a>
+      <a href="https://github.com/Utee9" target="_blank" rel="noopener noreferrer"
+         class="border text-gray-300 hover:text-white font-semibold py-3 px-8 rounded-lg transition inline-flex items-center justify-center gap-2" style="border-color:var(--border);">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.08-.73.08-.73 1.2.08 1.83 1.24 1.83 1.24 1.08 1.84 2.8 1.3 3.48 1 .1-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23.96-.27 1.98-.4 3-.4s2.04.13 3 .4c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.22.69.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+        GitHub
+      </a>
+    </div>
+    <div class="flex justify-center gap-6">
+      <a href="https://linkedin.com/in/utomi-ogbe/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-white transition" aria-label="LinkedIn">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </svg>
+      </a>
+      <a href="https://public.tableau.com/app/profile/utomi.ogbe" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-white transition" aria-label="Tableau Public">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12.5 2C10.5 2 9 3.5 9 5.5c0 .8.3 1.5.7 2.1L7.3 10H5.5C3.5 10 2 11.5 2 13.5S3.5 17 5.5 17h1.8l2.4 2.4c-.4.6-.7 1.3-.7 2.1 0 2 1.5 3.5 3.5 3.5s3.5-1.5 3.5-3.5c0-.8-.3-1.5-.7-2.1L17.7 17h1.8c2 0 3.5-1.5 3.5-3.5S21.5 10 19.5 10h-1.8l-2.4-2.4c.4-.6.7-1.3.7-2.1C16 3.5 14.5 2 12.5 2zm0 2c.9 0 1.5.6 1.5 1.5S13.4 7 12.5 7 11 6.4 11 5.5 11.6 4 12.5 4zM5.5 12h2.3l-2.3 2.3V12zm14 0v2.3L17.2 12h2.3zM12.5 18c.9 0 1.5.6 1.5 1.5s-.6 1.5-1.5 1.5-1.5-.6-1.5-1.5.6-1.5 1.5-1.5z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-8 px-6 border-t" style="border-color:var(--border);">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+    <p class="text-gray-600 text-sm font-mono">&copy; 2026 Utomi Ogbe. Built with care and deployed on GitHub Pages.</p>
+    <p class="text-gray-700 text-xs font-mono">// made with Python, caffeine, and late nights</p>
+  </div>
+</footer>
+
+<script>
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  mobileMenuBtn.addEventListener('click', () => {
+    const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+    mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
+    mobileMenu.classList.toggle('hidden');
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  document.querySelector('.fade-in').classList.add('visible');
+</script>
 </body>
 </html>
