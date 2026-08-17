@@ -18,7 +18,7 @@
     --bg:#0A0D10;
     --surface:#10151A;
     --border:#1E262D;
-    --green:#3ECF8E;
+    --accent:#4C8DFF;
     --red:#F0685C;
     --gold:#E8B94A;
     --text:#E7EDF2;
@@ -32,10 +32,10 @@
   .fade-in{ opacity:0; transform:translateY(20px); transition:opacity .7s ease-out, transform .7s ease-out; }
   .fade-in.visible{ opacity:1; transform:translateY(0); }
 
-  .cmd-label::before{ content:'$ '; color:var(--green); }
+  .cmd-label::before{ content:'$ '; color:var(--accent); }
 
   .cursor-blink{
-    display:inline-block; width:9px; height:1.1em; background:var(--green);
+    display:inline-block; width:9px; height:1.1em; background:var(--accent);
     margin-left:2px; vertical-align:text-bottom; animation:blink 1s step-end infinite;
   }
   @keyframes blink{ 50%{ opacity:0; } }
@@ -45,12 +45,12 @@
   @keyframes ticker{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
 
   .dot{ display:inline-block; width:6px; height:6px; border-radius:9999px; margin-right:8px; }
-  .dot-green{ background:var(--green); box-shadow:0 0 6px var(--green); }
+  .dot-accent{ background:var(--accent); box-shadow:0 0 6px var(--accent); }
   .dot-gold{ background:var(--gold); box-shadow:0 0 6px var(--gold); }
   .dot-red{ background:var(--red); box-shadow:0 0 6px var(--red); }
 
   .skill-tag{ transition:all .2s ease; }
-  .skill-tag:hover{ transform:translateY(-2px); border-color:var(--green); color:var(--text); }
+  .skill-tag:hover{ transform:translateY(-2px); border-color:var(--accent); color:var(--text); }
 
   .project-card{ transition:all .3s ease; }
   .project-card:hover{ transform:translateY(-4px); box-shadow:0 24px 48px rgba(0,0,0,.35); }
@@ -58,7 +58,7 @@
   .nav-link{ position:relative; }
   .nav-link::after{
     content:''; position:absolute; bottom:-4px; left:0; width:0; height:2px;
-    background:var(--green); transition:width .25s ease;
+    background:var(--accent); transition:width .25s ease;
   }
   .nav-link:hover::after{ width:100%; }
 
@@ -83,7 +83,7 @@
 <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b" style="background:rgba(10,13,16,0.85); border-color:var(--border);">
   <div class="flex justify-between items-center px-5 py-4 max-w-6xl mx-auto">
     <a href="#" class="font-mono text-lg font-semibold text-white tracking-tight">
-      utee<span style="color:var(--green);">$</span><span class="cursor-blink"></span>
+      utee<span style="color:var(--accent);">$</span><span class="cursor-blink"></span>
     </a>
     <div class="hidden md:flex items-center space-x-8">
       <a href="#about" class="nav-link text-gray-300 hover:text-white transition text-sm font-medium">About</a>
@@ -92,7 +92,7 @@
       <a href="#projects" class="nav-link text-gray-300 hover:text-white transition text-sm font-medium">Projects</a>
       <a href="#contact" class="nav-link text-gray-300 hover:text-white transition text-sm font-medium">Contact</a>
       <a href="https://github.com/Utee9" target="_blank" rel="noopener noreferrer"
-         class="font-mono text-black px-4 py-2 rounded-lg transition text-sm font-semibold" style="background:var(--green);">
+         class="font-mono text-black px-4 py-2 rounded-lg transition text-sm font-semibold" style="background:var(--accent);">
         GitHub
       </a>
     </div>
@@ -116,18 +116,18 @@
   <div class="overflow-hidden border-t" style="border-color:var(--border); background:var(--surface);">
     <div class="ticker-track font-mono text-xs py-2">
       <div class="flex items-center shrink-0">
-        <span class="flex items-center px-6 text-gray-400"><span class="dot dot-green"></span>GROK-PORTFOLIO-BOT &nbsp;ACTIVE — 4 AI PORTFOLIOS MIRRORED</span>
+        <span class="flex items-center px-6 text-gray-400"><span class="dot dot-accent"></span>GROK-PORTFOLIO-BOT &nbsp;ACTIVE — 4 AI PORTFOLIOS MIRRORED</span>
         <span class="flex items-center px-6 text-gray-400"><span class="dot dot-gold"></span>MEXC INTEGRATION &nbsp;9/50 TICKERS COVERED</span>
-        <span class="flex items-center px-6 text-gray-400"><span class="dot dot-green"></span>UCSYNC &nbsp;PRODUCTION — 100s OF DAILY SYNCS</span>
-        <span class="flex items-center px-6 text-gray-400"><span class="dot dot-green"></span>PRICE-ALERT BOT &nbsp;LIVE — 30MIN CRON</span>
+        <span class="flex items-center px-6 text-gray-400"><span class="dot dot-accent"></span>UCSYNC &nbsp;PRODUCTION — 100s OF DAILY SYNCS</span>
+        <span class="flex items-center px-6 text-gray-400"><span class="dot dot-accent"></span>PRICE-ALERT BOT &nbsp;LIVE — 30MIN CRON</span>
         <span class="flex items-center px-6 text-gray-400"><span class="dot dot-red"></span>COVERAGE GAP &nbsp;37/50 TICKERS STRUCTURALLY UNTOKENIZED</span>
         <span class="flex items-center px-6 text-gray-400"><span class="dot dot-gold"></span>STATUS &nbsp;BUILDING IN PUBLIC FROM LAGOS, NG</span>
       </div>
       <div class="flex items-center shrink-0" aria-hidden="true">
-        <span class="flex items-center px-6 text-gray-400"><span class="dot dot-green"></span>GROK-PORTFOLIO-BOT &nbsp;ACTIVE — 4 AI PORTFOLIOS MIRRORED</span>
+        <span class="flex items-center px-6 text-gray-400"><span class="dot dot-accent"></span>GROK-PORTFOLIO-BOT &nbsp;ACTIVE — 4 AI PORTFOLIOS MIRRORED</span>
         <span class="flex items-center px-6 text-gray-400"><span class="dot dot-gold"></span>MEXC INTEGRATION &nbsp;9/50 TICKERS COVERED</span>
-        <span class="flex items-center px-6 text-gray-400"><span class="dot dot-green"></span>UCSYNC &nbsp;PRODUCTION — 100s OF DAILY SYNCS</span>
-        <span class="flex items-center px-6 text-gray-400"><span class="dot dot-green"></span>PRICE-ALERT BOT &nbsp;LIVE — 30MIN CRON</span>
+        <span class="flex items-center px-6 text-gray-400"><span class="dot dot-accent"></span>UCSYNC &nbsp;PRODUCTION — 100s OF DAILY SYNCS</span>
+        <span class="flex items-center px-6 text-gray-400"><span class="dot dot-accent"></span>PRICE-ALERT BOT &nbsp;LIVE — 30MIN CRON</span>
         <span class="flex items-center px-6 text-gray-400"><span class="dot dot-red"></span>COVERAGE GAP &nbsp;37/50 TICKERS STRUCTURALLY UNTOKENIZED</span>
         <span class="flex items-center px-6 text-gray-400"><span class="dot dot-gold"></span>STATUS &nbsp;BUILDING IN PUBLIC FROM LAGOS, NG</span>
       </div>
@@ -139,24 +139,24 @@
 <section class="relative min-h-screen flex items-center justify-center px-6 pt-32 grid-fade">
   <div class="max-w-4xl mx-auto text-center relative z-10">
     <div class="fade-in">
-      <p class="font-mono text-sm mb-5" style="color:var(--green);">
+      <p class="font-mono text-sm mb-5" style="color:var(--accent);">
         <span class="cmd-label">whoami</span>
       </p>
       <h1 class="font-display text-5xl md:text-7xl font-extrabold mb-6 tracking-tight text-white">
-        Utee<span style="color:var(--green);">.</span>
+        Utee<span style="color:var(--accent);">.</span>
       </h1>
       <p class="text-xl md:text-2xl text-gray-300 mb-4 max-w-2xl mx-auto leading-relaxed">
-        Data engineer building automated, income-generating systems.
+        I automate the boring stuff so humans don't have to.
       </p>
       <p class="text-gray-500 mb-6 max-w-xl mx-auto">
-        Bias toward shipping over theorizing. Python, SQL, and cloud tooling, designed from Nigeria around real infrastructure constraints.
+        Developer focused on smart automation tools, data pipelines, and fintech software that solves real-world problems.
       </p>
       <p class="font-mono text-xs mb-10 inline-flex items-center gap-2 px-3 py-1.5 rounded-full border" style="border-color:var(--border); color:var(--muted);">
-        <span class="dot dot-green" style="margin-right:6px;"></span>
+        <span class="dot dot-accent" style="margin-right:6px;"></span>
         now: migrating Grok-Portfolio-Bot's execution venue to MEXC
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="#projects" class="text-black font-semibold py-3 px-8 rounded-lg transition inline-flex items-center justify-center gap-2" style="background:var(--green);">
+        <a href="#projects" class="text-black font-semibold py-3 px-8 rounded-lg transition inline-flex items-center justify-center gap-2" style="background:var(--accent);">
           View My Work
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
@@ -183,7 +183,7 @@
 <section id="about" class="py-24 px-6 border-t" style="border-color:var(--border);">
   <div class="max-w-4xl mx-auto">
     <div class="fade-in">
-      <p class="font-mono text-sm mb-3" style="color:var(--green);"><span class="cmd-label">cat about.md</span></p>
+      <p class="font-mono text-sm mb-3" style="color:var(--accent);"><span class="cmd-label">cat about.md</span></p>
       <h2 class="font-display text-3xl md:text-4xl font-bold mb-8 text-white">Building things that matter.</h2>
 
       <div class="grid md:grid-cols-2 gap-10">
@@ -195,8 +195,8 @@
 
         <div class="space-y-6">
           <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(62,207,142,0.12);">
-              <svg class="w-5 h-5" style="color:var(--green);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(76,141,255,0.12);">
+              <svg class="w-5 h-5" style="color:var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
               </svg>
             </div>
@@ -247,13 +247,13 @@
 <section id="experience" class="py-24 px-6 border-t" style="border-color:var(--border); background:rgba(255,255,255,0.015);">
   <div class="max-w-4xl mx-auto">
     <div class="fade-in">
-      <p class="font-mono text-sm mb-3" style="color:var(--green);"><span class="cmd-label">git log --author="Utee"</span></p>
+      <p class="font-mono text-sm mb-3" style="color:var(--accent);"><span class="cmd-label">git log --author="Utee"</span></p>
       <h2 class="font-display text-3xl md:text-4xl font-bold mb-12 text-white">Where I've Worked</h2>
 
       <div class="space-y-8">
         <div class="flex flex-col md:flex-row gap-4 md:gap-6">
           <div class="flex-shrink-0 md:w-28 md:text-right pt-1">
-            <span class="font-mono text-sm" style="color:var(--green);">2022—Now</span>
+            <span class="font-mono text-sm" style="color:var(--accent);">2022—Now</span>
           </div>
           <div class="border-l pl-6 pb-8" style="border-color:var(--border);">
             <h3 class="text-white font-semibold text-lg">Data Developer</h3>
@@ -268,7 +268,7 @@
 
         <div class="flex flex-col md:flex-row gap-4 md:gap-6">
           <div class="flex-shrink-0 md:w-28 md:text-right pt-1">
-            <span class="font-mono text-sm" style="color:var(--green);">2021—2022</span>
+            <span class="font-mono text-sm" style="color:var(--accent);">2021—2022</span>
           </div>
           <div class="border-l pl-6 pb-8" style="border-color:var(--border);">
             <h3 class="text-white font-semibold text-lg">Campus Lead Ambassador</h3>
@@ -279,7 +279,7 @@
 
         <div class="flex flex-col md:flex-row gap-4 md:gap-6">
           <div class="flex-shrink-0 md:w-28 md:text-right pt-1">
-            <span class="font-mono text-sm" style="color:var(--green);">2021</span>
+            <span class="font-mono text-sm" style="color:var(--accent);">2021</span>
           </div>
           <div class="border-l pl-6" style="border-color:var(--border);">
             <h3 class="text-white font-semibold text-lg">Data Analyst Intern</h3>
@@ -292,8 +292,8 @@
       <div class="mt-12 pt-8 border-t" style="border-color:var(--border);">
         <h4 class="font-mono text-xs uppercase tracking-wide text-gray-500 mb-4">Education</h4>
         <div class="flex items-center gap-4">
-          <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(62,207,142,0.12);">
-            <svg class="w-5 h-5" style="color:var(--green);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(76,141,255,0.12);">
+            <svg class="w-5 h-5" style="color:var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/>
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
             </svg>
@@ -312,7 +312,7 @@
 <section id="skills" class="py-24 px-6 border-t" style="border-color:var(--border);">
   <div class="max-w-4xl mx-auto">
     <div class="fade-in mb-12">
-      <p class="font-mono text-sm mb-3" style="color:var(--green);"><span class="cmd-label">cat stack.json</span></p>
+      <p class="font-mono text-sm mb-3" style="color:var(--accent);"><span class="cmd-label">cat stack.json</span></p>
       <h2 class="font-display text-3xl md:text-4xl font-bold text-white">Tools I Work With</h2>
     </div>
 
@@ -371,7 +371,7 @@
 <section id="projects" class="py-24 px-6 border-t" style="border-color:var(--border); background:rgba(255,255,255,0.015);">
   <div class="max-w-6xl mx-auto">
     <div class="fade-in mb-16">
-      <p class="font-mono text-sm mb-3" style="color:var(--green);"><span class="cmd-label">ls -la projects/</span></p>
+      <p class="font-mono text-sm mb-3" style="color:var(--accent);"><span class="cmd-label">ls -la projects/</span></p>
       <h2 class="font-display text-3xl md:text-4xl font-bold mb-4 text-white">Featured Projects</h2>
       <p class="text-gray-500 max-w-xl">Shipped systems, not tutorials — from live trading automation to production client tooling.</p>
     </div>
@@ -380,7 +380,7 @@
       <!-- Grok Portfolio Bot -->
       <div class="project-card fade-in rounded-2xl p-8 border" style="background:var(--surface); border-color:var(--border);">
         <div class="flex justify-between items-start mb-4">
-          <span class="font-mono text-xs font-semibold px-3 py-1 rounded-full" style="background:rgba(62,207,142,0.12); color:var(--green);">Python / Automation · Active</span>
+          <span class="font-mono text-xs font-semibold px-3 py-1 rounded-full" style="background:rgba(76,141,255,0.12); color:var(--accent);">Python / Automation · Active</span>
           <a href="https://github.com/Utee9/Grok-Portfolio-Bot" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-white transition">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.08-.73.08-.73 1.2.08 1.83 1.24 1.83 1.24 1.08 1.84 2.8 1.3 3.48 1 .1-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23.96-.27 1.98-.4 3-.4s2.04.13 3 .4c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.22.69.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
           </a>
@@ -401,7 +401,7 @@
           <span class="text-gray-400 text-xs px-2 py-1 rounded font-mono" style="background:rgba(255,255,255,0.04);">Telegram API</span>
         </div>
         <a href="https://github.com/Utee9/Grok-Portfolio-Bot" target="_blank" rel="noopener noreferrer"
-           class="font-medium transition inline-flex items-center text-sm" style="color:var(--green);">
+           class="font-medium transition inline-flex items-center text-sm" style="color:var(--accent);">
           View Source Code
           <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
@@ -420,7 +420,7 @@
         </p>
         <div class="rounded-lg border px-4 py-3 mb-6 font-mono text-xs" style="border-color:var(--border); background:rgba(0,0,0,0.2);">
           <p class="text-gray-500">$ status</p>
-          <p style="color:var(--green);">production · client-owned repository (private)</p>
+          <p style="color:var(--accent);">production · client-owned repository (private)</p>
         </div>
         <div class="flex flex-wrap gap-2 mb-6">
           <span class="text-gray-400 text-xs px-2 py-1 rounded font-mono" style="background:rgba(255,255,255,0.04);">Flask</span>
@@ -495,13 +495,13 @@
 <!-- Contact -->
 <section id="contact" class="py-24 px-6 border-t" style="border-color:var(--border);">
   <div class="max-w-2xl mx-auto text-center fade-in">
-    <p class="font-mono text-sm mb-3" style="color:var(--green);"><span class="cmd-label">ping utee</span></p>
+    <p class="font-mono text-sm mb-3" style="color:var(--accent);"><span class="cmd-label">ping utee</span></p>
     <h2 class="font-display text-3xl md:text-4xl font-bold mb-6 text-white">Let's Build Something Together</h2>
     <p class="text-gray-400 mb-10">
       Open to data engineering roles, collaborations, and interesting opportunities. Drop me a line, I'd love to hear from you.
     </p>
     <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-      <a href="mailto:utemma9@gmail.com" class="text-black font-semibold py-3 px-8 rounded-lg transition inline-flex items-center justify-center gap-2" style="background:var(--green);">
+      <a href="mailto:utemma9@gmail.com" class="text-black font-semibold py-3 px-8 rounded-lg transition inline-flex items-center justify-center gap-2" style="background:var(--accent);">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
         </svg>
