@@ -78,6 +78,18 @@
     pointer-events:none;
     z-index:0;
   }
+  
+  .hero-glow {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%);
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+      z-index: 0;
+  }
 
   @media (prefers-reduced-motion: reduce){
     .ticker-track, .cursor-blink, .fade-in{ animation:none !important; transition:none !important; }
@@ -123,6 +135,7 @@
 
 <!-- Hero -->
 <section class="relative min-h-screen flex items-center justify-center px-6 pt-32 grid-fade">
+  <div class="hero-glow"></div>
   <div class="max-w-4xl mx-auto text-center relative z-10">
     <div class="fade-in">
       <p class="font-mono text-sm mb-5 text-blue-400">
